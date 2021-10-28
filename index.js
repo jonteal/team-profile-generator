@@ -1,3 +1,6 @@
+const inquirer = require('inquirer');
+const fs = require('fs');
+
 const promptUser = () => {
     return inquirer.prompt([
         {
@@ -73,4 +76,34 @@ const promptUser = () => {
 
         ])    
     };
-        
+
+
+const generateHTML = ({ manager-name, manager-id, manager-email, manager-office-number, engineer-name, engineer-id, engineer-email, engineer-github-username, intern-name, intern-id, intern-email, intern-school }) =>
+`<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>Team Profile Generator</title>
+</head>
+<body>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">My Team Profile</h1>
+            <p class="lead"></p>
+        </div>
+    </div>
+</body>
+</html>`;
+    
+// Bonus using writeFileSync as a promise
+const init = () => {
+    promptUser()
+    // Use writeFileSync method to use promises instead of a callback function
+    .then((answers) => fs.writeFileSync('index.html', generateHTML(answers)))
+    .then(() => console.log('Successfully wrote to index.html'))
+    .catch((err) => console.error(err));
+};
+    
+init();
