@@ -24,6 +24,16 @@ const promptUser = () => {
             name: 'manager-office-number'
         },
 
+        {
+            type: 'list',
+            message: 'Who else is on the team?',
+            name: 'add-member',
+            choices: ['Engineer', 'Intern'],
+            when: function(answers) {
+                return answers.add-member
+            }
+        },
+
         // Here add the menu to add an engineer or intern
 
         // Questions for Engineer
@@ -78,7 +88,7 @@ const promptUser = () => {
     };
 
 
-const generateHTML = ({ manager-name, manager-id, manager-email, manager-office-number, engineer-name, engineer-id, engineer-email, engineer-github-username, intern-name, intern-id, intern-email, intern-school }) =>
+const generateHTML = ({ managerName, managerId, managerEmail, managerOfficeNumber, engineerName, engineerId, engineerEmail, engineerGithubUsername, internName, internId, internEmail, internSchool }) =>
 `<!DOCTYPE html>
 <html lang="en">
 <head>
