@@ -4,6 +4,8 @@ const Engineer = require('./lib/Engineer');
 const Manager = require('./lib/Manager');
 const Intern = require('./lib/Intern');
 
+const employeeList = [];
+
 const promptManager = () => {
     return inquirer.prompt([
         {
@@ -99,24 +101,24 @@ const promptIntern = () => {
 };
 
 
-const generateHTML = ({ managerName, managerId, managerEmail, managerOfficeNumber, engineerName, engineerId, engineerEmail, engineerGithubUsername, internName, internId, internEmail, internSchool }) =>
-`<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <title>Team Profile Generator</title>
-</head>
-<body>
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            <h1 class="display-4">My Team Profile</h1>
-            <p class="lead"></p>
-        </div>
-    </div>
-</body>
-</html>`;
+// const generateHTML = ({ managerName, managerId, managerEmail, managerOfficeNumber, engineerName, engineerId, engineerEmail, engineerGithubUsername, internName, internId, internEmail, internSchool }) =>
+// `<!DOCTYPE html>
+// <html lang="en">
+// <head>
+//     <meta charset="UTF-8">
+//     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+//     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+//     <title>Team Profile Generator</title>
+// </head>
+// <body>
+//     <div class="jumbotron jumbotron-fluid">
+//         <div class="container">
+//             <h1 class="display-4">My Team Profile</h1>
+//             <p class="lead"></p>
+//         </div>
+//     </div>
+// </body>
+// </html>`;
     
 // Bonus using writeFileSync as a promise
 const init = () => {

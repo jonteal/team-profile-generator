@@ -7,5 +7,5 @@ test("gets the engineer\'s github", () => {
 
 test("gets the engineer\'s role", () => {
     const engineer = new Engineer("Tom", 2, "tomjones@gmail.com", "devTomJones");
-    expect(manager.getRole()).toBe("Engineer");
+    expect(engineer.getRole()).toBe("Engineer");
 });
