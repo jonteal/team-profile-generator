@@ -1,0 +1,23 @@
+h1 {
+    background-color: red;
+    text-align: center;
+    color: white;
+    padding: 2rem;
+}
+
+.card-body {
+    background-color: rgb(9, 82, 240);
+    color: white;
+}
+
+.card {
+    box-shadow: 10px 10px 5px grey;
+    margin: 2rem;
+}
+
+.main-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+}
