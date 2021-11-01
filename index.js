@@ -6,6 +6,7 @@ const Intern = require('./lib/Intern');
 const Employee = require('./lib/Employee');
 
 const employeeList = [];
+const managerList = [];
 
 const promptManager = () => {
     return inquirer.prompt([
@@ -165,6 +166,38 @@ const generateManager = (managerList) => {
             <li class="list-group-item">${managerList[0].getID()}</li>
             <li class="list-group-item">${managerList[0].getEmail()}</li>
             <li class="list-group-item">${managerList[0].getOfficeNumber()}</li>
+        </ul>
+    </div>`
+    employeeList.push(temp);
+}
+
+const generateEngineer = (engineerList) => {
+    temp = `
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">${engineerList[0].getName()}</h5>
+            <h5 class="card-title">Manager</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">${engineerList[0].getID()}</li>
+            <li class="list-group-item">${engineerList[0].getEmail()}</li>
+            <li class="list-group-item">${engineerList[0].getGithub()}</li>
+        </ul>
+    </div>`
+    employeeList.push(temp);
+}
+
+const generateIntern = (internList) => {
+    temp = `
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">${internList[0].getName()}</h5>
+            <h5 class="card-title">Manager</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">${internList[0].getID()}</li>
+            <li class="list-group-item">${internList[0].getEmail()}</li>
+            <li class="list-group-item">${internList[0].getSchool()}</li>
         </ul>
     </div>`
     employeeList.push(temp);
