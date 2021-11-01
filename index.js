@@ -120,7 +120,8 @@ const generateHTML = () =>
     <body>
         <h1>My Team</h1>`
 
-        htmlCode += employeeListReturn()
+        htmlCode += employeeListReturn();
+        
     `</body>
     </html>`;
     
@@ -131,6 +132,8 @@ const init = () => {
     .then((response) => fs.writeFileSync('index.html', generateHTML(response)))
     .then(() => console.log('Successfully wrote to index.html'))
     .catch((err) => console.error(err));
+        return htmlCode;
+
 };
 
 init();
