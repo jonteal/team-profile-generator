@@ -3,14 +3,15 @@ const fs = require('fs');
 const Engineer = require('./lib/Engineer');
 const Manager = require('./lib/Manager');
 const Intern = require('./lib/Intern');
-const Employee = require('./lib/Employee');
+// const Employee = require('./lib/Employee');
 
 const employeeList = [];
 const managerList = [];
 const engineerList = [];
 const internList = [];
-const htmlCode;
+// const htmlCode;
 
+// Prompt for manager questions
 const promptManager = () => {
     return inquirer.prompt([
         {
@@ -41,10 +42,10 @@ const promptManager = () => {
     })
 };
 
+// Prompt for Engineer questions
 const promptEngineer = () => {
     return inquirer.prompt([
 
-        // Questions for Engineer
         {
             type: 'input',
             message: 'What is the engineer\'s name?',
@@ -73,7 +74,7 @@ const promptEngineer = () => {
         })
 }
 
-        // Intern questions
+// Prompt for Intern questions
 const promptIntern = () => {
     return inquirer.prompt([
 
@@ -105,7 +106,7 @@ const promptIntern = () => {
         })
 };
 
-
+// Function that generates the HTML file after prompts are finished
 const generateHTML = () =>
     `<!DOCTYPE html>
     <html lang="en">
@@ -120,25 +121,15 @@ const generateHTML = () =>
     <body>
         <h1>My Team</h1>`
 
-        htmlCode += employeeListReturn();
+        // htmlCode += employeeListReturn();
         
     `</body>
     </html>`;
-    
-// Bonus using writeFileSync as a promise
-const init = () => {
-    promptManager()
-    // Use writeFileSync method to use promises instead of a callback function
-    .then((response) => fs.writeFileSync('index.html', generateHTML(response)))
-    .then(() => console.log('Successfully wrote to index.html'))
-    .catch((err) => console.error(err));
-        return htmlCode;
 
-};
 
-init();
 
-function promptContinue() {
+
+const promptContinue = () => {
     console.log('Select the type of employee: ')
     inquirer.prompt([
         {
@@ -157,10 +148,9 @@ function promptContinue() {
             generateManager(managerList);
             generateEngineer(engineerList);
             generateIntern(internList);
-            generateHTML();
-            init();
+            // init();
             // call function to get to generating the html page
-            generateHTML.generateText(employeeList, employeeList.length);
+            generateHTML();
         }
     })
 }
@@ -221,4 +211,21 @@ const employeeListReturn = () => {
     return temp;
 }
 
+const init = () => {
+    promptContinue()
+    // Use writeFileSync method to use promises instead of a callback function
+    .then((response) => fs.writeFileSync('index.html', generateHTML(response)))
+    .then(() => console.log('Successfully wrote to index.html'))
+    .catch((err) => console.error(err));
+        // return htmlCode;
 
+    // .then((response) => {
+    //     const htmlPageContent = generateHTML(response);
+        
+    //     fs.writeFile('index.html', htmlPageContent, (err) =>
+    //         err ? console.log(err) : console.log('Successfully created index.html!')
+    //     );
+
+};
+
+init();
