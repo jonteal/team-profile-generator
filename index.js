@@ -7,6 +7,8 @@ const Employee = require('./lib/Employee');
 
 const employeeList = [];
 const managerList = [];
+const engineerList = [];
+const internList = [];
 
 const promptManager = () => {
     return inquirer.prompt([
@@ -147,8 +149,13 @@ function promptContinue() {
             promptEngineer();
         } else if (response.selection === 'Intern') {
             promptIntern();
-        } else {
+        } else if (response.selection === 'Finish building team') {
             console.log('Your team is being generated!');
+            generateManager(managerList);
+            generateEngineer(engineerList);
+            generateIntern(internList);
+            generateHTML();
+            init();
             // call function to get to generating the html page
             generateHTML.generateText(employeeList, employeeList.length);
         }
