@@ -154,3 +154,20 @@ function promptContinue() {
     })
 }
 
+const generateManager = (managerList) => {
+    temp = `
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">${managerList[0].getName()}</h5>
+            <h5 class="card-title">Manager</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">${managerList[0].getID()}</li>
+            <li class="list-group-item">${managerList[0].getEmail()}</li>
+            <li class="list-group-item">${managerList[0].getOfficeNumber()}</li>
+        </ul>
+    </div>`
+    employeeList.push(temp);
+}
+
+
