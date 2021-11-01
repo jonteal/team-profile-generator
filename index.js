@@ -9,6 +9,7 @@ const employeeList = [];
 const managerList = [];
 const engineerList = [];
 const internList = [];
+const htmlCode;
 
 const promptManager = () => {
     return inquirer.prompt([
@@ -105,24 +106,23 @@ const promptIntern = () => {
 };
 
 
-// const generateHTML = ({ managerName, managerId, managerEmail, managerOfficeNumber, engineerName, engineerId, engineerEmail, engineerGithubUsername, internName, internId, internEmail, internSchool }) =>
-// `<!DOCTYPE html>
-// <html lang="en">
-// <head>
-//     <meta charset="UTF-8">
-//     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-//     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-//     <title>Team Profile Generator</title>
-// </head>
-// <body>
-//     <div class="jumbotron jumbotron-fluid">
-//         <div class="container">
-//             <h1 class="display-4">My Team Profile</h1>
-//             <p class="lead"></p>
-//         </div>
-//     </div>
-// </body>
-// </html>`;
+const generateHTML = () =>
+    `<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel="stylesheet" href ="assets/style.css">
+        <title>Team Profile Generator Template</title>
+    </head>
+    <body>
+        <h1>My Team</h1>`
+
+        htmlCode += employeeListReturn()
+    `</body>
+    </html>`;
     
 // Bonus using writeFileSync as a promise
 const init = () => {
@@ -208,6 +208,14 @@ const generateIntern = (internList) => {
         </ul>
     </div>`
     employeeList.push(temp);
+}
+
+const employeeListReturn = () => {
+    var temp = "";
+    for (let i = 0; i < employeeList.length; i++) {
+        temp += employeeList[i];
+    }
+    return temp;
 }
 
 
