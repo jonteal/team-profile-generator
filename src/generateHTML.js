@@ -1,6 +1,7 @@
+// Require function to use the file system library
 const fs = require('fs');
 
-
+// Function to generate an HTML document populated with response data from user
 const generateHTML = (response) => {
     fs.writeFile('./dist/index.html', writeFile(response), (err) => {
         err ? console.log(err) : console.log("yay");
@@ -33,6 +34,7 @@ const writeFile = (array) => {
     return htmlCode;
 }
 
+// Export the generateHTML function to the index.js
 module.exports = {
     generateHTML,
 }

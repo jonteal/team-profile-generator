@@ -1,3 +1,4 @@
+/* Heading Styling */
 h1 {
     background-color: red;
     text-align: center;
@@ -5,16 +6,19 @@ h1 {
     padding: 2rem;
 }
 
+/* Card Body Styling */
 .card-body {
     background-color: rgb(9, 82, 240);
     color: white;
 }
 
+/* Card Styling */
 .card {
     box-shadow: 10px 10px 5px grey;
     margin: 2rem;
 }
 
+/* Main Container Styling */
 .main-container {
     display: flex;
     flex-wrap: wrap;
