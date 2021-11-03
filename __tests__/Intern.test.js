@@ -9,3 +9,5 @@ test("gets the intern\'s role", () => {
     const intern = new Intern("Billy", 3, "billybob@gmail.com", "UofA");
     expect(intern.getRole()).toBe("Intern");
 });
+
+// test
