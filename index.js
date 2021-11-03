@@ -1,5 +1,4 @@
 const inquirer = require('inquirer');
-const fs = require('fs');
 const Engineer = require('./lib/Engineer');
 const Manager = require('./lib/Manager');
 const Intern = require('./lib/Intern');
@@ -141,14 +140,12 @@ const promptContinue = () => {
             generate.generateHTML(employeeList)
             // init();
             // call function to generate the html page
-            console.log(employeeList.join(""));
+            // console.log(employeeList.join(""));
         }
     })
 }
 
 const generateManager = (array) => {
-    console.log(array[0].getName());
-    console.log(array);
     let temp = `
     <div class="card" style="width: 18rem;">
         <div class="card-body">
@@ -157,7 +154,7 @@ const generateManager = (array) => {
         </div>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">${array[0].getId()}</li>
-            <li class="list-group-item">${array[0].getEmail()}</li>
+            <li class="list-group-item"><a href = "mailto: ${array[0].getEmail()}">${array[0].getEmail()}</a></li>
             <li class="list-group-item">${array[0].getOfficeNumber()}</li>
         </ul>
     </div>`
@@ -176,7 +173,7 @@ const generateEngineer = (engineerList) => {
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">${element.getId()}</li>
                 <li class="list-group-item">${element.getEmail()}</li>
-                <li class="list-group-item">${element.getGithub()}</li>
+                <li class="list-group-item"><a href = "https://github.com/${element.getGithub()}">${element.getGithub()}</a></li>
             </ul>
         </div>`
         employeeList.push(temp); 
