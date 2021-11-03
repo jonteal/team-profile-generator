@@ -1,12 +1,4 @@
-const generateHTML = (response) => {
-    fs.writeFile('./dist/index.html', writeFile(), (err) => {
-        err ? console.log(err) : console.log("yay");
-    })
-}
-
-// Function that generates the HTML file after prompts are finished
-const writeFile = () => {
-    return `<!DOCTYPE html>
+<!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -20,9 +12,4 @@ const writeFile = () => {
         <h1>My Team</h1>
         
     </body>
-    </html>`;
-}
-
-module.exports = {
-    generateHTML,
-}
+    </html>

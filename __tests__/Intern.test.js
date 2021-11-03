@@ -10,4 +10,3 @@ test("gets the intern\'s role", () => {
     expect(intern.getRole()).toBe("Intern");
 });
 
-// test

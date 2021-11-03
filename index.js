@@ -3,6 +3,7 @@ const fs = require('fs');
 const Engineer = require('./lib/Engineer');
 const Manager = require('./lib/Manager');
 const Intern = require('./lib/Intern');
+const generate = require('./src/generateHTML');
 // const Employee = require('./lib/Employee');
 
 const employeeList = [];
@@ -36,7 +37,8 @@ const promptManager = () => {
         },
     ])
     .then((response) => {
-        employeeList.push(new Manager(response.name, response.id, response.email, response.officeNumber));
+        managerList.push(new Manager(response.managerName, response.managerId, response.managerEmail, response.managerOfficeNumber));
+        console.log(managerList);
         console.log('Manager successfully added to the team.');
         promptContinue();
     })
@@ -68,7 +70,7 @@ const promptEngineer = () => {
         },
     ])
         .then((response) => {
-            employeeList.push(new Engineer(response.name, response.id, response.email, response.github));
+            engineerList.push(new Engineer(response.engineerName, response.engineerId, response.engineerEmail, response.engineerGithubUsername));
             console.log('Intern successfully added to the team.');
             promptContinue();
         })
@@ -100,31 +102,13 @@ const promptIntern = () => {
         },
     ])
         .then((response) => {
-            employeeList.push(new Intern(response.name, response.id, response.email, response.school));
+            internList.push(new Intern(response.internName, response.internId, response.internEmail, response.internSchool));
             console.log('Intern successfully added to the team.');
             promptContinue();
         })
 };
 
-// Function that generates the HTML file after prompts are finished
-const generateHTML = () =>
-    `<!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <link rel="stylesheet" href ="assets/style.css">
-        <title>Team Profile Generator Template</title>
-    </head>
-    <body>
-        <h1>My Team</h1>`
 
-        // htmlCode += employeeListReturn();
-        
-    `</body>
-    </html>`;
 
 
 
@@ -139,68 +123,83 @@ const promptContinue = () => {
         },
     ])
     .then((response) => {
+        console.log(response);
         if(response.selection === 'Engineer') {
             promptEngineer();
         } else if (response.selection === 'Intern') {
             promptIntern();
         } else if (response.selection === 'Finish building team') {
             console.log('Your team is being generated!');
+            console.log('Inside else if statement: ', managerList[0]);
             generateManager(managerList);
-            generateEngineer(engineerList);
-            generateIntern(internList);
+            if (engineerList.length > 0) {
+                generateEngineer(engineerList);
+            }
+            if (internList.length > 0) {
+                generateIntern(internList);
+            }
+            generate.generateHTML(employeeList)
             // init();
-            // call function to get to generating the html page
-            generateHTML();
+            // call function to generate the html page
+            console.log(employeeList.join(""));
         }
     })
 }
 
-const generateManager = (managerList) => {
-    temp = `
+const generateManager = (array) => {
+    console.log(array[0].getName());
+    console.log(array);
+    let temp = `
     <div class="card" style="width: 18rem;">
         <div class="card-body">
-            <h5 class="card-title">${managerList[0].getName()}</h5>
+            <h5 class="card-title">${array[0].getName()}</h5>
             <h5 class="card-title">Manager</h5>
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">${managerList[0].getID()}</li>
-            <li class="list-group-item">${managerList[0].getEmail()}</li>
-            <li class="list-group-item">${managerList[0].getOfficeNumber()}</li>
+            <li class="list-group-item">${array[0].getId()}</li>
+            <li class="list-group-item">${array[0].getEmail()}</li>
+            <li class="list-group-item">${array[0].getOfficeNumber()}</li>
         </ul>
     </div>`
     employeeList.push(temp);
 }
 
 const generateEngineer = (engineerList) => {
-    temp = `
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">${engineerList[0].getName()}</h5>
-            <h5 class="card-title">Manager</h5>
-        </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">${engineerList[0].getID()}</li>
-            <li class="list-group-item">${engineerList[0].getEmail()}</li>
-            <li class="list-group-item">${engineerList[0].getGithub()}</li>
-        </ul>
-    </div>`
-    employeeList.push(temp);
+    
+    engineerList.forEach(element => {
+        let temp = `
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">${element.getName()}</h5>
+                <h5 class="card-title">Engineer</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">${element.getId()}</li>
+                <li class="list-group-item">${element.getEmail()}</li>
+                <li class="list-group-item">${element.getGithub()}</li>
+            </ul>
+        </div>`
+        employeeList.push(temp); 
+    });
 }
 
 const generateIntern = (internList) => {
-    temp = `
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">${internList[0].getName()}</h5>
-            <h5 class="card-title">Manager</h5>
-        </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">${internList[0].getID()}</li>
-            <li class="list-group-item">${internList[0].getEmail()}</li>
-            <li class="list-group-item">${internList[0].getSchool()}</li>
-        </ul>
-    </div>`
-    employeeList.push(temp);
+    internList.forEach(element => {
+        let temp = `
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">${element.getName()}</h5>
+                <h5 class="card-title">Intern</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">${element.getId()}</li>
+                <li class="list-group-item">${element.getEmail()}</li>
+                <li class="list-group-item">${element.getSchool()}</li>
+            </ul>
+        </div>`
+        employeeList.push(temp);
+    })
+    
 }
 
 const employeeListReturn = () => {
@@ -212,20 +211,54 @@ const employeeListReturn = () => {
 }
 
 const init = () => {
-    promptContinue()
+    promptManager()
     // Use writeFileSync method to use promises instead of a callback function
-    .then((response) => fs.writeFileSync('index.html', generateHTML(response)))
-    .then(() => console.log('Successfully wrote to index.html'))
-    .catch((err) => console.error(err));
+    // .then((response) => fs.writeFileSync('index.html', generateHTML(response)))
+    // .then(() => console.log('Successfully wrote to index.html'))
+    // .catch((err) => console.error(err));
         // return htmlCode;
 
-    // .then((response) => {
-    //     const htmlPageContent = generateHTML(response);
-        
-    //     fs.writeFile('index.html', htmlPageContent, (err) =>
-    //         err ? console.log(err) : console.log('Successfully created index.html!')
-    //     );
 
 };
 
 init();
+
+
+
+
+{/* <h1>My Team</h1>
+    <div class="main-container">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Name</h5>
+                <h5 class="card-title">Manager</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">ID</li>
+                <li class="list-group-item">Email</li>
+                <li class="list-group-item">Office Number</li>
+            </ul>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Name</h5>
+                <h5 class="card-title">Engineer</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">ID</li>
+                <li class="list-group-item">Email</li>
+                <li class="list-group-item">Github Username</li>
+            </ul>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Name</h5>
+                <h5 class="card-title">Intern</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">ID</li>
+                <li class="list-group-item">Email</li>
+                <li class="list-group-item">School</li>
+            </ul>
+        </div>
+    </div> */}
