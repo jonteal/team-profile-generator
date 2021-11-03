@@ -20,11 +20,15 @@ const writeFile = (array) => {
         <title>Team Profile Generator Template</title>
     </head>
     <body>
-        <h1>My Team</h1>`
+        <h1>My Team</h1>
+        <div class="main-container">
+        `
     
         htmlCode += array.join("")
         
-    htmlCode += `</body>
+    htmlCode += `
+    </div>
+    </body>
     </html>`;
     return htmlCode;
 }

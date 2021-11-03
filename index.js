@@ -96,7 +96,7 @@ const promptIntern = () => {
         },
         {
             type: 'input',
-            message: 'What is the intern\'s office number?',
+            message: 'What is the intern\'s school?',
             name: 'internSchool'
         },
     ])
@@ -172,8 +172,8 @@ const generateEngineer = (engineerList) => {
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">${element.getId()}</li>
-                <li class="list-group-item">${element.getEmail()}</li>
-                <li class="list-group-item"><a href = "https://github.com/${element.getGithub()}">${element.getGithub()}</a></li>
+                <li class="list-group-item"><a href = "mailto: ${element.getEmail()}">${element.getEmail()}</a></li>
+                <li class="list-group-item"><a href = "https://github.com/${element.getGithub()}" target = "_blank">${element.getGithub()}</a></li>
             </ul>
         </div>`
         employeeList.push(temp); 
@@ -190,7 +190,7 @@ const generateIntern = (internList) => {
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">${element.getId()}</li>
-                <li class="list-group-item">${element.getEmail()}</li>
+                <li class="list-group-item"><a href = "mailto: ${element.getEmail()}">${element.getEmail()}</a></li>
                 <li class="list-group-item">${element.getSchool()}</li>
             </ul>
         </div>`
