@@ -67,6 +67,10 @@ node index.js
 
 <a name="usage"></a>
 ## Usage
+* In order to access the user questions, open the terminal (right click index.js and click 'open in integrated terminal')
+* Answer all prompted questions until the terminal reads "Your team is being generated!"
+* To view the index.html, right click on the file and select 'open in default browser', or (if you have Live Server), 'open with live server'.
+
 Provide instructions and examples for use. Include screenshots as needed.
 To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
     ```md
@@ -89,7 +93,7 @@ If you created an application or package and would like other developers to cont
 Go the extra mile and write tests for your application. Then provide examples on how to run them here.
 
 ## Questions
-
+If you have any questions or comments, please feel free to contact me by email at jonjacksonvibes@gmail.com!
 
 ## Video
 
@@ -98,7 +102,7 @@ Go the extra mile and write tests for your application. Then provide examples on
 
 
 ## Links
-
+https://github.com/jonteal/team-profile-generator
 
 ## Resources / Credits
 This project was authored by Jon Jackson, but had some logical guidance by fellow cohort members Ryan Paragas and Laurel Thornburn, as well as the tutor Robert Parsons.
