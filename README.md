@@ -1,25 +1,40 @@
-# team-profile-generator
+# Team Profile Generator
 
-# 10 Object-Oriented Programming: Team Profile Generator
+<a name="description"></a>
 
-## Your Task
+## Description
+The purpose of this program was to create a tool where any team could quickly generate user profiles containing the basic information for their team members. One key advantage to this is it's easy-to-use command-line interface with node.js that delivers a series of prompts to the creator and quickly generates a sleek and polished HTML document displaying every member of the team including a Manager, and as many Engineers and Interns as they may need.
 
-Your task is to build a Node.js command-line application that takes in information about employees on a software engineering team, then generates an HTML webpage that displays summaries for each person. Testing is key to making code maintainable, so you’ll also write a unit test for every part of your code and ensure that it passes each test.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Because this application won’t be deployed, you’ll need to provide a link to a walkthrough video that demonstrates its functionality and all of the tests passing. You’ll need to submit a link to the video AND add it to the readme of your project.
+## Table of Contents
+- [Description](#description)
+- [User Story](#userstory)
+- [Acceptance Criteria](#acceptancecriteria)
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Contributing](#contributing)
+- [Tests](#test)
+- [Questions](#questions)
+- [Video](#video)
+- [Screenshots](#screenshots)
+- [Links](#links)
+- [Resources / Credits](#credits)
 
-> **Note**: There is no starter code for this assignment.
+
+<a name="userstory"></a>
 
 ## User Story
-
 ```md
 AS A manager
 I WANT to generate a webpage that displays my team's basic info
 SO THAT I have quick access to their emails and GitHub profiles
 ```
 
-## Acceptance Criteria
+<a name="acceptancecriteria"></a>
 
+## Acceptance Critera
 ```md
 GIVEN a command-line application that accepts user input
 WHEN I am prompted for my team members and their information
@@ -40,142 +55,102 @@ WHEN I decide to finish building my team
 THEN I exit the application, and the HTML is generated
 ```
 
-## Mock-Up
+<a name="installation"></a>
 
-The following image shows a mock-up of the generated HTML’s appearance and functionality:
+## Installation
+* Clone the repository using:
 
-![HTML webpage titled “My Team” features five boxes listing employee names, titles, and other key info.](./Assets/10-object-oriented-programming-homework-demo.png)
-
-The styling in the image is just an example, so feel free to add your own.
-
-## Getting Started
-
-This homework will combine many of the skills we've covered so far. In addition to the User Story and Acceptance Criteria, we’ve provided some guidelines to help get started.
-
-Your application should use [Jest](https://www.npmjs.com/package/jest) for running the unit tests and [Inquirer](https://www.npmjs.com/package/inquirer) for collecting input from the user. The application will be invoked by using the following command:
-
-```bash
+```
+git clone https://github.com/jonteal/team-profile-generator
+```
+* Be sure that you are in the current working directory
+* Install the dependencies ( jest and inquirer) by opening the terminal and running
+```
+npm install
+```
+* Run the project by typing the following command in the terminal:
+```
 node index.js
 ```
 
-It is recommended that you start with a directory structure that looks like the following example:
+<a name="usage"></a>
 
-```md
-.
-├── __tests__/             //jest tests
-│   ├── Employee.test.js
-│   ├── Engineer.test.js
-│   ├── Intern.test.js
-│   └── Manager.test.js
-├── dist/                  // rendered output (HTML) and CSS style sheet      
-├── lib/                   // classes
-├── src/                   // template helper code 
-├── .gitignore             // indicates which folders and files Git should ignore
-├── index.js               // runs the application
-└── package.json           
+## Usage
+* In order to access the user questions, open the terminal (right click index.js and click 'open in integrated terminal')
+* Answer all prompted questions until the terminal reads "Your team is being generated!"
+* To view the index.html, right click on the file and select 'open in default browser', or (if you have Live Server), 'open with live server'.
+
+
+<a name="license"></a>
+
+## License
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+<a name="contributing"></a>
+
+## How to Contribute
+1. [Fork the repo!](https://docs.github.com/en/get-started/quickstart/fork-a-repo)
+2. Create a feature branch:
 ```
+git checkout -b yourname-branch
+```
+3. Commit changes:
+```
+git commit -m 'Your changes here'
+```
+4. Push to the branch:
+```
+git push origin yourname-branch
+```
+5. Submit a pull request and wait for it to be approved or denied.
 
-**Important**: Make sure that you remove `dist` from the `.gitignore` file so that Git will track this folder and include it when you push up to your application's repository.
+<a name="tests"></a>
 
-The application must include `Employee`, `Manager`, `Engineer`, and `Intern` classes. The tests for these classes (in the `_tests_` directory) must ALL pass.
-
-The first class is an `Employee` parent class with the following properties and methods:
-
-* `name`
-
-* `id`
-
-* `email`
-
-* `getName()`
-
-* `getId()`
-
-* `getEmail()`
-
-* `getRole()`&mdash;returns `'Employee'`
-
-The other three classes will extend `Employee`.
-
-In addition to `Employee`'s properties and methods, `Manager` will also have the following:
-
-* `officeNumber`
-
-* `getRole()`&mdash;overridden to return `'Manager'`
-
-In addition to `Employee`'s properties and methods, `Engineer` will also have the following:
-
-* `github`&mdash;GitHub username
-
-* `getGithub()`
-
-* `getRole()`&mdash;overridden to return `'Engineer'`
-
-In addition to `Employee`'s properties and methods, `Intern` will also have the following:
-
-* `school`
-
-* `getSchool()`
-
-* `getRole()`&mdash;overridden to return `'Intern'`
-
-Finally, although it’s not a requirement, consider adding validation to ensure that user input is in the proper format.
-
-## Grading Requirements
-
-This homework is graded based on the following criteria: 
-
-### Deliverables: 15%
-
-* A sample HTML file generated using the application must be submitted.
-
-* Your GitHub repository containing your application code.
+## Tests
+1. Ensure that jest is installed in your directory. This should have been done earlier when you ran 'npm install' in the command line.
+2. In the command line, write:
+```
+npm run test
+```
+3. Confirm all four test files pass (screenshots included below). Test files are located in the tests folder and are titled: Employee.test.js, Engineer.test.js, Manager.test.js, and Intern.test.js.
 
 
-### Walkthrough Video: 32%
+<a name="questions"></a>
 
-* A walkthrough video that demonstrates the functionality of the Team Profile Generator and passing tests must be submitted, and a link to the video should be included in your README file.
-
-* The walkthrough video must show all four tests passing from the command line.
-
-* The walkthrough video must demonstrate how a user would invoke the application from the command line.
-
-* The walkthrough video must demonstrate how a user would enter responses to all of the prompts in the application.
-
-* The walkthrough video must demonstrate a generated HTML file that matches the user input.
+## Questions
+If you have any questions or comments, please feel free to contact me by email at jonjacksonvibes@gmail.com!
 
 
-### Technical Acceptance Criteria: 40%
+<a name="video"></a>
 
-* Satisfies all of the preceding acceptance criteria plus the following:
+## Video
+View video: https://drive.google.com/file/d/1njFioaDhMvYOXSTD8hJGW8zLPcn_6ua7/view
 
-	* Uses the [Inquirer package](https://www.npmjs.com/package/inquirer).
+<a name="screenshots"></a>
 
-	* Uses the [Jest package](https://www.npmjs.com/package/jest) for a suite of unit tests.
+## Screenshots
 
-  * The application must have `Employee`, `Manager`, `Engineer`, and `Intern` classes.
+![Screenshot of Test Screen](./dist/assets/images/screenshot1.png)
+![Screenshot of Sample Site](./dist/assets/images/screenshot2.png)
+![Screenshot of Terminal](./dist/assets/images/screenshot3.png)
 
-### Repository Quality: 13%
 
-* Repository has a unique name.
+<a name="links"></a>
 
-* Repository follows best practices for file structure and naming conventions.
+## Links
+Github Repository: https://github.com/jonteal/team-profile-generator
 
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
 
-* Repository contains multiple descriptive commit messages.
+<a name="credits"></a>
 
-* Repository contains a high-quality readme with description and a link to a walkthrough video.
+## Resources / Credits
+This project was authored by Jon Jackson, but had some logical guidance by fellow cohort members Ryan Paragas and Laurel Thornburn, as well as tutor Robert Parsons.
 
-## Review
 
-You are required to submit the following for review:
 
-* A walkthrough video that demonstrates the functionality of the application and passing tests.
 
-* A sample HTML file generated using your application.
-
-* The URL of the GitHub repository, with a unique name and a readme describing the project.
-
----
-© 2021 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
